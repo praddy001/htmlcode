@@ -1,0 +1,95 @@
+<?php
+$input = "";
+$length = "";
+$reverse = "";
+$substring = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $input = $_POST["text"];
+
+    // String operations
+    $length = strlen($input);
+    $reverse = strrev($input);
+    $substring = substr($input, 0, 5); // first 5 characters
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Manipulation</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 380px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #ff758c;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>🔤 String Operations</h2>
+
+    <form method="POST">
+        <input type="text" name="text" placeholder="Enter a string" required>
+        <button type="submit">Process</button>
+    </form>
+
+    <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
+        <div class="output">
+            <p><b>Original String:</b> <?php echo $input; ?></p>
+            <p><b>Length:</b> <?php echo $length; ?></p>
+            <p><b>Reversed:</b> <?php echo $reverse; ?></p>
+            <p><b>Substring (first 5 chars):</b> <?php echo $substring; ?></p>
+        </div>
+    <?php } ?>
+
+</div>
+
+</body>
+</html>

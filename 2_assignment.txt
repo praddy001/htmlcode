@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Creative Web Page</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    }
+
+    .card {
+        width: 85%;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    h1 {
+        color: #ff6f61;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 180px;
+        border-radius: 15px;
+        transition: 0.3s;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+
+    .link-btn {
+        display: inline-block;
+        margin: 15px;
+        padding: 10px 20px;
+        background: #ff6f61;
+        color: white;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .link-btn:hover {
+        background: #ff3b2e;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th {
+        background: #ff6f61;
+        color: white;
+        padding: 10px;
+    }
+
+    td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background: #f9f9f9;
+    }
+
+    .nested {
+        background: #fff5f5;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>✨ My Web Page ✨</h1>
+
+    <!-- Image -->
+    <img src="https://via.placeholder.com/180" alt="Profile Image">
+
+    <!-- Hyperlink -->
+    <br>
+    <a href="https://github.com" target="_blank" class="link-btn">
+        Visit My GitHub
+    </a>
+
+    <!-- Main Table -->
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Information</th>
+        </tr>
+
+        <tr>
+            <td>👩 Student</td>
+            <td>
+                <!-- Nested Table -->
+                <table class="nested">
+                    <tr>
+                        <th>Field</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>Asmita Mulik</td>
+                    </tr>
+                    <tr>
+                        <td>Roll No</td>
+                        <td>SECOC75</td>
+                    </tr>
+                    <tr>
+                        <td>Branch</td>
+                        <td>Computer Engineering</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>📌 Project</td>
+            <td>AI Student Support System</td>
+        </tr>
+
+        <tr>
+            <td>🎯 Skills</td>
+            <td>HTML, CSS, JavaScript, AI, DBMS</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

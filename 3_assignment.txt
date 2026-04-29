@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stylish Form</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-box {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        width: 420px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .row {
+        display: flex;
+        gap: 10px;
+    }
+
+    .input-group {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        border-color: #667eea;
+        outline: none;
+    }
+
+    .gender-box {
+        margin-top: 10px;
+    }
+
+    .gender-box label {
+        margin-right: 15px;
+        font-weight: normal;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #667eea;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #5a67d8;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h2>Student Form</h2>
+
+    <form>
+
+        <!-- Name -->
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter full name" required>
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter email" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="input-group">
+            <label>Gender</label>
+            <div class="gender-box">
+                <input type="radio" name="gender"> Male
+                <input type="radio" name="gender"> Female
+                <input type="radio" name="gender"> Other
+            </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="input-group">
+            <label>Date of Birth</label>
+            <input type="date" required>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Register</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager Pro</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: 0.3s;
+    }
+
+    .dark {
+        background: #121212;
+        color: white;
+    }
+
+    .app {
+        width: 380px;
+        background: white;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .dark .app {
+        background: #1e1e1e;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .add-btn {
+        background: #667eea;
+        color: white;
+    }
+
+    .toggle-btn {
+        background: black;
+        color: white;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 8px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dark li {
+        background: #333;
+    }
+
+    .done {
+        text-decoration: line-through;
+        color: gray;
+    }
+
+    .actions button {
+        margin-left: 5px;
+        font-size: 12px;
+    }
+
+    .edit { background: orange; color: white; }
+    .delete { background: red; color: white; }
+    .complete { background: green; color: white; }
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="top">
+        <h3>📋 Task Manager</h3>
+        <button class="toggle-btn" onclick="toggleMode()">🌙</button>
+    </div>
+
+    <div>
+        <input type="text" id="taskInput" placeholder="Enter task...">
+        <button class="add-btn" onclick="addTask()">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+</div>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function renderTasks() {
+    let list = document.getElementById("taskList");
+    list.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        let li = document.createElement("li");
+
+        let text = document.createElement("span");
+        text.textContent = task.text;
+        if (task.done) text.classList.add("done");
+
+        // Buttons
+        let actions = document.createElement("div");
+        actions.className = "actions";
+
+        // Complete
+        let completeBtn = document.createElement("button");
+        completeBtn.textContent = "✔";
+        completeBtn.className = "complete";
+        completeBtn.onclick = () => {
+            tasks[index].done = !tasks[index].done;
+            save();
+        };
+
+        // Edit
+        let editBtn = document.createElement("button");
+        editBtn.textContent = "✏";
+        editBtn.className = "edit";
+        editBtn.onclick = () => {
+            let newTask = prompt("Edit task:", task.text);
+            if (newTask) {
+                tasks[index].text = newTask;
+                save();
+            }
+        };
+
+        // Delete
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.className = "delete";
+        deleteBtn.onclick = () => {
+            tasks.splice(index, 1);
+            save();
+        };
+
+        actions.append(completeBtn, editBtn, deleteBtn);
+        li.append(text, actions);
+        list.appendChild(li);
+    });
+}
+
+function addTask() {
+    let input = document.getElementById("taskInput");
+    let value = input.value.trim();
+
+    if (value === "") {
+        alert("Enter a task");
+        return;
+    }
+
+    tasks.push({ text: value, done: false });
+    input.value = "";
+    save();
+}
+
+function save() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    renderTasks();
+}
+
+// Dark Mode
+function toggleMode() {
+    document.body.classList.toggle("dark");
+}
+
+renderTasks();
+</script>
+
+</body>
+</html>

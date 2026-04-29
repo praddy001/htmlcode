@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Calculator</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .app {
+        width: 320px;
+        background: #1c1c1c;
+        padding: 15px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        color: white;
+    }
+
+    .display {
+        width: 100%;
+        height: 60px;
+        background: black;
+        color: #00ffcc;
+        font-size: 22px;
+        text-align: right;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    button {
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .num { background: #444; color: white; }
+    .op { background: #ff9500; color: white; }
+    .equal { background: #28a745; grid-column: span 2; }
+    .clear { background: red; }
+
+    .history {
+        margin-top: 10px;
+        max-height: 120px;
+        overflow-y: auto;
+        background: #111;
+        padding: 8px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <input type="text" id="display" class="display" readonly>
+
+    <div class="buttons">
+        <button class="clear" onclick="clearAll()">C</button>
+        <button class="op" onclick="addValue('/')">÷</button>
+        <button class="op" onclick="addValue('*')">×</button>
+        <button class="op" onclick="addValue('-')">−</button>
+
+        <button class="num" onclick="addValue('7')">7</button>
+        <button class="num" onclick="addValue('8')">8</button>
+        <button class="num" onclick="addValue('9')">9</button>
+        <button class="op" onclick="addValue('+')">+</button>
+
+        <button class="num" onclick="addValue('4')">4</button>
+        <button class="num" onclick="addValue('5')">5</button>
+        <button class="num" onclick="addValue('6')">6</button>
+
+        <button class="num" onclick="addValue('1')">1</button>
+        <button class="num" onclick="addValue('2')">2</button>
+        <button class="num" onclick="addValue('3')">3</button>
+
+        <button class="num" onclick="addValue('0')">0</button>
+        <button class="equal" onclick="calculate()">=</button>
+    </div>
+
+    <div class="history" id="history">
+        <b>History:</b><br>
+    </div>
+
+</div>
+
+<script>
+let expression = "";
+
+// Add values to display
+function addValue(val) {
+    expression += val;
+    document.getElementById("display").value = expression;
+}
+
+// Clear all
+function clearAll() {
+    expression = "";
+    document.getElementById("display").value = "";
+}
+
+// Manual calculation using switch-case
+function evaluateExpression(exp) {
+    let tokens = exp.match(/(\d+|\+|\-|\*|\/)/g);
+    let result = parseFloat(tokens[0]);
+
+    for (let i = 1; i < tokens.length; i += 2) {
+        let op = tokens[i];
+        let num = parseFloat(tokens[i + 1]);
+
+        switch(op) {
+            case '+': result += num; break;
+            case '-': result -= num; break;
+            case '*': result *= num; break;
+            case '/': result = num !== 0 ? result / num : "Error"; break;
+        }
+    }
+    return result;
+}
+
+// Calculate
+function calculate() {
+    if (expression === "") return;
+
+    let result = evaluateExpression(expression);
+
+    // Show result
+    document.getElementById("display").value = result;
+
+    // Add to history
+    let history = document.getElementById("history");
+    history.innerHTML += expression + " = " + result + "<br>";
+
+    expression = result.toString();
+}
+
+// Keyboard support
+document.addEventListener("keydown", function(e) {
+    if (!isNaN(e.key) || "+-*/".includes(e.key)) {
+        addValue(e.key);
+    } else if (e.key === "Enter") {
+        calculate();
+    } else if (e.key === "Backspace") {
+        expression = expression.slice(0, -1);
+        document.getElementById("display").value = expression;
+    }
+});
+</script>
+
+</body>
+</html>

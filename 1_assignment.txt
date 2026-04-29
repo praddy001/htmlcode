@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .profile-img {
+            display: block;
+            margin: 0 auto 20px;
+            width: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .info {
+            line-height: 1.8;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><u>My Personal Profile</u></h1>
+
+    <img src="https://via.placeholder.com/120" class="profile-img" alt="Profile">
+
+    <div class="info">
+
+        <div class="card">
+            <p><span class="label">Name:</span> <b>Asmita Mulik</b></p>
+            <p><span class="label">Roll No:</span> <i>SECOC75</i></p>
+            <p><span class="label">Course:</span> <strong>Bachelor of Engineering</strong></p>
+            <p><span class="label">Branch:</span> <em>Computer Engineering</em></p>
+        </div>
+
+        <div class="card">
+            <p><span class="label">Email:</span> <a href="#">asmita@email.com</a></p>
+            <p><span class="label">Phone:</span> <mark>+91 9876543210</mark></p>
+            <p><span class="label">Skills:</span> 
+                <small>HTML, CSS, JavaScript, AI, DBMS</small>
+            </p>
+        </div>
+
+        <div class="card">
+            <p><span class="label">About Me:</span></p>
+            <p>
+                I am a <b>passionate student</b> interested in 
+                <u>Artificial Intelligence</u> and 
+                <strong>Web Development</strong>.  
+                I love building <i>innovative projects</i> that solve real-world problems.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>© 2026 <b>My Portfolio</b> | Designed with ❤️</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?php
+// Create an array
+$students = ["Asmita", "Amar", "Prem", "Om"];
+
+// Add a new value (example)
+$students[] = "Rahul";
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Array Example</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            background: #f1f1f1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .count {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>📚 Student List (Array)</h2>
+
+    <ul>
+        <?php
+        // Display array values
+        foreach ($students as $student) {
+            echo "<li>$student</li>";
+        }
+        ?>
+    </ul>
+
+    <div class="count">
+        Total Students: <?php echo count($students); ?>
+    </div>
+
+</div>
+
+</body>
+</html>

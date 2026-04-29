@@ -1,0 +1,98 @@
+<?php
+$name = $email = $gender = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $gender = $_POST["gender"];
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>POST Method Form</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #36d1dc;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>📋 User Form</h2>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="email" name="email" placeholder="Enter Email" required>
+
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
+        <div class="output">
+            <h3>Submitted Details:</h3>
+            <p><b>Name:</b> <?php echo $name; ?></p>
+            <p><b>Email:</b> <?php echo $email; ?></p>
+            <p><b>Gender:</b> <?php echo $gender; ?></p>
+        </div>
+    <?php } ?>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?php
+date_default_timezone_set("Asia/Kolkata"); // Set timezone
+
+$welcome = "✨ Welcome to My PHP Page ✨";
+$date = date("l, d F Y");
+$time = date("h:i:s A");
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome App</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .time {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1><?php echo $welcome; ?></h1>
+
+    <p><b>Date:</b> <?php echo $date; ?></p>
+    <p class="time"><b>Time:</b> <?php echo $time; ?></p>
+
+</div>
+
+</body>
+</html>
